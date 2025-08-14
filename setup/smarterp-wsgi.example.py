@@ -10,21 +10,21 @@
 #
 # For gunicorn additional globals need to be defined in the Gunicorn section.
 # Then the following command should run:
-#   $ gunicorn odoo:service.wsgi_server.application -c openerp-wsgi.py
+#   $ gunicorn smarterp:service.wsgi_server.application -c openerp-wsgi.py
 
-import odoo
+import smarterp
 
 #----------------------------------------------------------
 # Common
 #----------------------------------------------------------
 
 # Equivalent of --load command-line option
-odoo.conf.server_wide_modules = ['base', 'web']
-conf = odoo.tools.config
+smarterp.conf.server_wide_modules = ['base', 'web']
+conf = smarterp.tools.config
 
 # Path to the OpenERP Addons repository (comma-separated for
 # multiple locations)
-#conf['addons_path'] = './odoo/addons,./addons'
+#conf['addons_path'] = './smarterp/addons,./addons'
 
 # Optional database config if not using local socket
 #conf['db_name'] = 'mycompany'
@@ -36,9 +36,9 @@ conf = odoo.tools.config
 #----------------------------------------------------------
 # Generic WSGI handlers application
 #----------------------------------------------------------
-application = odoo.http.root
+application = smarterp.http.root
 
-odoo.service.server.load_server_wide_modules()
+smarterp.service.server.load_server_wide_modules()
 
 #----------------------------------------------------------
 # Gunicorn
